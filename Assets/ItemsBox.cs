@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SourceBox : MonoBehaviour
+public class ItemsBox : MonoBehaviour
 {
-    [SerializeField] GameObject item;
-
+    public GameObject itemPrefab;
+    public int itemStock = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,4 +17,16 @@ public class SourceBox : MonoBehaviour
     {
         
     }
+
+    public bool hasStock() {
+        return itemStock > 0;
+    }
+
+    public GameObject getItem() {
+        ReduceItem();
+        return itemPrefab;
+    }
+    private void ReduceItem() {
+        itemStock--;
+    }   
 }
